@@ -15,7 +15,7 @@ def get_swaggerui_blueprint(
     env = Environment(loader=PackageLoader('sanic_swagger_ui', 'templates'))
 
     swagger_ui = Blueprint(blueprint_name, url_prefix=url_prefix)
-    swagger_ui.static('/dist', 'dist')
+    swagger_ui.static('/static', './static')
 
     print('*' * 50)
     print(os.getcwd())
@@ -38,7 +38,7 @@ def get_swaggerui_blueprint(
 
     fields = {
         # Some fields are used directly in template
-        'base_url': base_url + '/dist',
+        'base_url': base_url + '/static',
         'app_name': default_config.pop('app_name'),
         # Rest are just serialized into json string for inclusion in the .js file
         'config_json': json.dumps(default_config),
