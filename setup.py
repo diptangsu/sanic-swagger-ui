@@ -38,13 +38,13 @@ setup(
             'LICENSE',
             'README.md',
             'templates/*.html',
-            'dist/VERSION',
-            'dist/LICENSE',
-            'dist/README.md',
-            'dist/*.html',
-            'dist/*.js',
-            'dist/*.css',
-            'dist/*.png'
+            'static/VERSION',
+            'static/LICENSE',
+            'static/README.md',
+            'static/*.html',
+            'static/*.js',
+            'static/*.css',
+            'static/*.png'
         ],
     }
 )
