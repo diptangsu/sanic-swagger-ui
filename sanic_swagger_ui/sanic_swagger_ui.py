@@ -6,11 +6,10 @@ from jinja2 import Environment, PackageLoader
 
 
 def get_swaggerui_blueprint(
-        base_url,
         docs_path,
+        url_prefix='/swagger',
         app_name='Swagger UI',
         blueprint_name='swagger_ui',
-        url_prefix='/swagger',
         config=None,
     ):
     env = Environment(loader=PackageLoader('sanic_swagger_ui', 'templates'))
@@ -34,7 +33,7 @@ def get_swaggerui_blueprint(
 
     fields = {
         # Some fields are used directly in template
-        'base_url': base_url + '/static',
+        'base_url': url_prefix + '/static',
         'app_name': default_config.pop('app_name'),
         # Rest are just serialized into json string for inclusion in the .js file
         'config_json': json.dumps(default_config),
