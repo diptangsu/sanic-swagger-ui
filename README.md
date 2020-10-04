@@ -1,6 +1,6 @@
 # Sanic Swagger UI
 
-Simple Flask blueprint for adding [Swagger UI](https://github.com/swagger-api/swagger-ui) to your flask application.
+Simple Sanic blueprint for adding [Swagger UI](https://github.com/swagger-api/swagger-ui) to your sanic application.
 
 Inspired by [flask-swagger-ui](https://github.com/sveint/flask-swagger-ui).
 
