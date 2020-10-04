@@ -1,21 +1,20 @@
+import pathlib
 from setuptools import setup
-from os import path
 from sanic_swagger_ui import __version__
 
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
+README = (HERE / "README.md").read_text()
 
 setup(
     name='sanic-swagger-ui',
     version=__version__,
     description='Swagger UI blueprint for Sanic',
-    long_description=long_description,
+    long_description=README,
+    long_description_content_type='text/markdown',
     zip_safe=False,
 
-    url='',
+    url='https://github.com/diptangsu/sanic-swagger-ui',
 
     author='Diptangsu Goswami',
     author_email='diptangsu.97@gmail.com',
