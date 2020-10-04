@@ -1,8 +1,10 @@
 # Sanic Swagger UI
 
+Simple Flask blueprint for adding [Swagger UI](https://github.com/swagger-api/swagger-ui) to your flask application.
+
 Inspired by [flask-swagger-ui](https://github.com/sveint/flask-swagger-ui).
 
-## Installation steps
+## Installation
 
 You can install it using `pip`.
 
@@ -10,7 +12,7 @@ You can install it using `pip`.
 pip install sanic_swagger_ui
 ```
 
-## How to use
+## Usage
 
 ```python
 from sanic import Sanic
