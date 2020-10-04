@@ -1,13 +1,13 @@
-import os
 import json
 import inspect
+import sysconfig
 from sanic import Blueprint, response
 from jinja2 import Environment, PackageLoader
 
 
 def get_swaggerui_blueprint(
         base_url,
-        api_url,
+        docs_path,
         blueprint_name='swagger_ui',
         url_prefix='/swagger',
         config=None,
@@ -15,21 +15,16 @@ def get_swaggerui_blueprint(
     env = Environment(loader=PackageLoader('sanic_swagger_ui', 'templates'))
 
     swagger_ui = Blueprint(blueprint_name, url_prefix=url_prefix)
-    swagger_ui.static('/static', './static')
-
-    print('*' * 50)
-    print(os.getcwd())
-    print(os.listdir())
-    print(__file__)
-    print(inspect.getfile(inspect.currentframe()))
-    print('*' * 50)
+    site_packages_path = sysconfig.get_paths()["purelib"]
+    static_path = site_packages_path + '/sanic_swagger_ui/static'
+    swagger_ui.static('/static', static_path)
 
     template = env.get_template('index.html')
 
     default_config = {
         'app_name': 'Swagger UI',
         'dom_id': '#swagger-ui',
-        'url': api_url,
+        'url': docs_path,
         'layout': 'StandaloneLayout',
         'deepLinking': True
     }
@@ -52,24 +47,3 @@ def get_swaggerui_blueprint(
             return response.html(content)
 
     return swagger_ui
-
-
-if __name__ == '__main__':
-    from sanic import Sanic
-
-    app = Sanic(__name__)
-
-    SWAGGER_URL = '/swagger'
-    API_URL = '/swagger/dist/index.yaml' 
-
-    swaggerui_blueprint = get_swaggerui_blueprint(
-        SWAGGER_URL,
-        API_URL
-    )
-    app.blueprint(swaggerui_blueprint)
-
-    @app.route("/")
-    async def test(req):
-        return response.text('Hello World from Sanic', status=200)
-
-    app.run(debug=True, host='0.0.0.0', port=5555)
