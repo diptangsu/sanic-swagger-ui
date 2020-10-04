@@ -1,5 +1,6 @@
 from setuptools import setup
 from os import path
+from sanic_swagger_ui import __version__
 
 here = path.abspath(path.dirname(__file__))
 
@@ -9,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='sanic-swagger-ui',
-    version='0.0.1',
+    version=__version__,
     description='Swagger UI blueprint for Sanic',
     long_description=long_description,
     zip_safe=False,
