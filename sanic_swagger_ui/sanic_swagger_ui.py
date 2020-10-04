@@ -8,6 +8,7 @@ from jinja2 import Environment, PackageLoader
 def get_swaggerui_blueprint(
         base_url,
         docs_path,
+        app_name='Swagger UI',
         blueprint_name='swagger_ui',
         url_prefix='/swagger',
         config=None,
@@ -22,7 +23,7 @@ def get_swaggerui_blueprint(
     template = env.get_template('index.html')
 
     default_config = {
-        'app_name': 'Swagger UI',
+        'app_name': app_name,
         'dom_id': '#swagger-ui',
         'url': docs_path,
         'layout': 'StandaloneLayout',
